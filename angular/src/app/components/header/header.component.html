@@ -1,0 +1,21 @@
+<div class="row-fluid">
+  <div class="example-button-row">
+    <button mat-button color="primary" routerLink="['/dashboard']">
+      <mat-icon>home</mat-icon> Dashboard
+    </button>
+    
+    <div class="btn-group float-right" dropdown>
+      <button id="button-basic" dropdownToggle type="button" class="btn btn-default dropdown-toggle" aria-controls="dropdown-basic">
+        {{ currentUser?.name }} <span class="caret"></span>
+      </button>
+      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+          role="menu" aria-labelledby="button-basic">
+        <li role="menuitem"><a class="dropdown-item" href="#">Profile</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="#">Setting</a></li>
+        <li class="divider dropdown-divider"></li>
+        <li role="menuitem" (click)="logout()"><mat-icon>logout</mat-icon> Logout</li>
+      </ul>
+    </div>
+    
+  </div>
+</div>

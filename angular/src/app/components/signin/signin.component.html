@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    
+    <div class="col-6">
+      <br>
+      <br>
+      <h2 class="section-title text-center">Signin With a Exist Account</h2>
+      <br>
+      <div id="editor">
+        <p>This is the editor content.</p>
+      </div>
+      <script src="./node_modules/ckeditor/ckeditor.js"></script>
+      <script>
+        CKEDITOR.replace( 'editor' );
+      </script> 
+      <app-alert></app-alert>
+      <form [formGroup]="userDetails" (ngSubmit)="doSignin(userDetails.value)">
+
+        <mat-form-field class="full-width"> <!-- EMAIL -->
+          <input matInput type="email" placeholder="Email" formControlName="email" required>
+          <mat-error *ngFor="let validation of validation_messages.email">
+            <mat-error class="error-message" *ngIf="userDetails.get('email').hasError(validation.type) && (userDetails.get('email').dirty || userDetails.get('email').touched)">{{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width"> <!-- PASSWORD -->
+          <input matInput type="password" placeholder="Password" formControlName="password" required>
+          <mat-error *ngFor="let validation of validation_messages.password">
+            <mat-error class="error-message" *ngIf="userDetails.get('password').hasError(validation.type) && (userDetails.get('password').dirty || userDetails.get('password').touched)">{{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+        
+        <button mat-raised-button color="primary" type="submit" [disabled]="!userDetails.valid">Signin</button>
+
+      </form>
+    </div>
+
+    <div class="col-3"></div>
+    
+  </div>
+</div>
+
